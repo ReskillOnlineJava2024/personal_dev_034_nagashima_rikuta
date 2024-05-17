@@ -50,7 +50,8 @@ public class RecipeEntity {
 		return contents;
 	}
 	
-	public RecipeEntity(Integer categoryId,Integer userId,String recipeName,String materials,String contents) {
+	public RecipeEntity(Integer id,Integer categoryId,Integer userId,String recipeName,String materials,String contents) {
+		this.id=id;
 		this.categoryId=categoryId;
 		this.userId=userId;
 		this.recipeName=recipeName;
@@ -58,10 +59,16 @@ public class RecipeEntity {
 		this.contents=contents;
 	}
 	
-	public RecipeEntity(Integer id,Integer categoryId,Integer userId,String recipeName,String materials,String contents) {
+	public RecipeEntity(Integer id,Integer categoryId, String recipeName, String materials, String contents) {	
 		this.id=id;
 		this.categoryId=categoryId;
-		this.userId=userId;
+		this.recipeName=recipeName;
+		this.materials=materials;
+		this.contents=contents;
+	}
+	
+	public RecipeEntity(Integer categoryId, String recipeName, String materials, String contents) {	
+		this.categoryId=categoryId;
 		this.recipeName=recipeName;
 		this.materials=materials;
 		this.contents=contents;

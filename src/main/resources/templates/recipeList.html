@@ -5,7 +5,9 @@
 <title>今日の献立</title>
 </head>
 <body>
-
+		<header th:replace="header"></header>
+	<hr>
+	
 	<nav>
 		<a href="/recipes?categoryId=1">和食</a>
 		<a href="/recipes?categoryId=2">洋食</a>
@@ -30,7 +32,7 @@
 		</tr>
 		<tr th:each="recipe:${recipes}">
 			<td th:text="${recipe.id}"></td>
-			<td th:text="${recipe.recipeName}"></td>
+			<td><a th:href="@{'/recipes/'+${recipe.id}+'/all'}"th:text="${recipe.recipeName}"></a></td>
 			<td th:text="${recipe.materials}"></td>
 			<td>
 				<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
@@ -45,7 +47,6 @@
 		</tr>
 	</table>	
 	<a href="/recipes/new">新規登録</a><br>
-	<a href="/logout">ログアウト</a>
 	
 </body>
 </html>

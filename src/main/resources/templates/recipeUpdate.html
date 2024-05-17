@@ -5,6 +5,9 @@
 <title>レシピ更新</title>
 </head>
 <body>
+	<header th:replace="header"></header>
+	<hr>
+	
 	<h1>レシピ情報変更</h1>
 
 	<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
@@ -12,28 +15,28 @@
 			<tr>
 				<th>カテゴリー</th>
 				<td>
-					和食<input type="radio"name="categoryId"value="1">
-					洋食<input type="radio"name="categoryId"value="2">
-					中華<input type="radio"name="categoryId"value="3">
-					その他<input type="radio"name="categoryId"value="4">
+					<input type="radio"name="categoryId"value="1"th:checked="${recipe.categoryId == 1}">和食
+					<input type="radio"name="categoryId"value="2"th:checked="${recipe.categoryId == 2}">洋食
+					<input type="radio"name="categoryId"value="3"th:checked="${recipe.categoryId == 3}">中華
+					<input type="radio"name="categoryId"value="4"th:checked="${recipe.categoryId == 4}">その他
 				</td>
 			</tr>
 			<tr>
 				<th>料理名</th>
 				<td>
-					<input type="text" name="recipeName" th:value="${recipe.recipeName}">
+					<input type="text" name="recipeName"th:value="${recipe.recipeName}">
 				</td>
 			</tr>
 			<tr>
 				<th>材料</th>
 				<td>
-					<input type="text" name="materials" th:value="${recipe.materials}">
+					<input type="text" name="materials"th:value="${recipe.materials}">
 				</td>
 			</tr>
 			<tr>
 				<th>作り方</th>
 				<td>
-					<input type="text" name="contents" th:value="${recipe.contents}">
+					<textarea name="contents">[[${recipe.contents}]]</textarea>
 				</td>
 			</tr>
 		</table>

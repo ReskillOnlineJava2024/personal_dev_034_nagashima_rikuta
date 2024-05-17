@@ -51,6 +51,17 @@ public class UserController {
 			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
 			return "login";
 		}
+		if (userName == null || userName.length() == 0) {
+			model.addAttribute("message", "名前を入力してください");
+			return "login";
+		}
+		if (password == null || password.length() == 0) {
+			model.addAttribute("message", "パスワードを入力してください");
+			return "login";
+		}
+
+		// セッション管理されたアカウント情報に名前をセット
+		account.setUserName(userName);
 		
 		return "redirect:/recipes";
 	}
@@ -59,9 +70,19 @@ public class UserController {
 	@PostMapping("/users/add")
 	public String store(
 			@RequestParam("userName") String userName,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password,
+			Model model) {
 
 		UserEntity user = new UserEntity(userName,password);
+		
+		if (userName == null || userName.length() == 0) {
+			model.addAttribute("message", "名前を入力してください");
+			return "userRegistration";
+		}
+		if (password == null || password.length() == 0) {
+			model.addAttribute("message", "パスワードを入力してください");
+			return "userRegistration";
+		}
 		userRepository.save(user);
 
 		return "redirect:/login";

@@ -35,16 +35,13 @@ public class RecipeController {
 
 		List<RecipeEntity> recipeList = null;
 		
-		if (keyword.length() == 0) {
-			recipeList = recipeRepository.findAll();
-		} else {
-			recipeList = recipeRepository. findByRecipeNameContaining(keyword);
-		}
-		
-		if (categoryId == null) {
+		if (keyword.length() == 0&&categoryId == null) {
 			recipeList = recipeRepository.findAll();
 			
-		}else {
+		} else if(keyword.length() != 0&&categoryId == null) {
+			recipeList = recipeRepository. findByRecipeNameContaining(keyword);
+			
+		} else if(keyword.length() == 0&&categoryId != null) {
 			recipeList = recipeRepository.findByCategoryId(categoryId);
 		}
 
@@ -64,15 +61,14 @@ public class RecipeController {
 	@PostMapping("/recipes/add")
 	public String add(
 			@RequestParam("categoryId") Integer categoryId,
-			@RequestParam("userId")Integer userId,
 			@RequestParam("recipeName") String recipeName,
 			@RequestParam("materials") String materials,
 			@RequestParam("contents") String contents) {
 
-		RecipeEntity recipe = new RecipeEntity(categoryId, userId, recipeName,materials,contents);
+		RecipeEntity recipe = new RecipeEntity(categoryId, recipeName,materials,contents);
 		recipeRepository.save(recipe);
 
-		return "redirect:/recipeList";
+		return "redirect:/recipes";
 	}
 
 	// 更新画面表示
@@ -84,29 +80,39 @@ public class RecipeController {
 		RecipeEntity recipe = recipeRepository.findById(id).get();
 		model.addAttribute("recipe", recipe);
 
-		return "recipeUpdata";
+		return "recipeUpdate";
+	}
+	
+	@GetMapping("/recipes/{id}/all")
+	public String showAll(
+			@PathVariable("id") Integer id, 
+			Model model) {
+
+		RecipeEntity recipe = recipeRepository.findById(id).get();
+		model.addAttribute("recipe", recipe);
+		return "recipeData";
 	}
 
 	// 更新処理
 	@PostMapping("/recipes/{id}/edit")
 	public String update(
+			@PathVariable("id") Integer id,
 			@RequestParam("categoryId") Integer categoryId,
-			@RequestParam("userId")Integer userId,
 			@RequestParam("recipeName") String recipename,
 			@RequestParam("materials") String materials,
 			@RequestParam("contents") String contents) {
 
-		RecipeEntity recipe = new RecipeEntity(categoryId, userId, recipename,materials,contents);
+		RecipeEntity recipe = new RecipeEntity(id,categoryId,recipename,materials,contents);
 		recipeRepository.save(recipe);
-
-		return "redirect:/recipeList";
+	
+		return "redirect:/recipes";
 	}
-
+	
 	// 削除処理
 	@PostMapping("/recipes/{id}/delete")
 	public String delete(@PathVariable("id") Integer id) {
 		recipeRepository.deleteById(id);
-		return "redirect:/recipeList";
+		return "redirect:/recipes";
 	}
 
 }
