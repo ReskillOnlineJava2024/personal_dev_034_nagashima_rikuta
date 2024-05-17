@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>レシピ更新</title>
+</head>
+<body>
+	<h1>レシピ情報変更</h1>
+
+	<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
+		<table border="1">
+			<tr>
+				<th>カテゴリー</th>
+				<td>
+					和食<input type="radio"name="categoryId"value="1">
+					洋食<input type="radio"name="categoryId"value="2">
+					中華<input type="radio"name="categoryId"value="3">
+					その他<input type="radio"name="categoryId"value="4">
+				</td>
+			</tr>
+			<tr>
+				<th>料理名</th>
+				<td>
+					<input type="text" name="recipeName" th:value="${recipe.recipeName}">
+				</td>
+			</tr>
+			<tr>
+				<th>材料</th>
+				<td>
+					<input type="text" name="materials" th:value="${recipe.materials}">
+				</td>
+			</tr>
+			<tr>
+				<th>作り方</th>
+				<td>
+					<input type="text" name="contents" th:value="${recipe.contents}">
+				</td>
+			</tr>
+		</table>
+		<input type="submit" value="更新">
+	</form>
+</body>
+</html>

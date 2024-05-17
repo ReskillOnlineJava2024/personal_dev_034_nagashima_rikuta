@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>今日の献立</title>
+</head>
+<body>
+
+	<nav>
+		<a href="/recipes?categoryId=1">和食</a>
+		<a href="/recipes?categoryId=2">洋食</a>
+		<a href="/recipes?categoryId=3">中華</a>
+		<a href="/recipes?categoryId=4">その他</a>
+		<a href="/recipes">全レシピ</a>
+	
+	</nav>
+	
+	<form action="/recipes" method="get">
+		<input type="text" name="keyword" placeholder="料理名" th:value="${keyword}">
+		<button>検索</button>
+	</form>
+		
+	<table border="1">
+		<tr>
+			<th>NO</th>
+			<th>料理名</th>
+			<th>材料</th>
+			<th>編集</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="recipe:${recipes}">
+			<td th:text="${recipe.id}"></td>
+			<td th:text="${recipe.recipeName}"></td>
+			<td th:text="${recipe.materials}"></td>
+			<td>
+				<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
+					<input type="submit" value="更新">
+				</form>
+			</td>
+			<td>
+				<form th:action="'/recipes/'+${recipe.id}+'/delete'" method="post">
+					<input type="submit" value="削除">
+				</form>
+			</td>
+		</tr>
+	</table>	
+	<a href="/recipes/new">新規登録</a><br>
+	<a href="/logout">ログアウト</a>
+	
+</body>
+</html>
