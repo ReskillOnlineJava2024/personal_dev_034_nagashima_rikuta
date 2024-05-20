@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+	<link rel="stylesheet" type="text/css" href="/css/user.css">
 </head>
 
 <body>
-		<header>
-		<h1>今日の献立</h1>
-		</header>
-	
-		<h1>ログイン</h1>
-		
-<main>
-		<form action="/login" method="post">
-			<span th:text="${message}" style="color:red;"></span>
-				<table border="1">
-					<tr>
-						<th>ユーザー名</th>
-						<td>
-							<input type="text" name="userName">
-						</td>
-					</tr>
-					<tr>
-						<th>パスワード</th>
-						<td>
-							<input type="text" name="password">
-						</td>
-					</tr>
-				</table>
-			<input type="submit" value="ログイン">
-		</form>
-		
-	<a href="/users/new">ユーザー新規登録</a><br>
-		
-</main>
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h2>ログイン</h2>
+			</div>
+			
+			<div class="container">
+				
+				<form action="/login" method="post">
+					
+					<span th:text="${message}" style="color:red;"></span>
+				
+				<div class="control-group">
+					<input type="text"name="userName" placeholder="ユーザー名">
+				</div>
 
+				<div class="control-group">
+					<input type="password" name="password" placeholder="パスワード">
+				</div>
+				
+				<input type="submit" value="ログイン"class="button">
+				
+				</form>
+				
+				<a class="user-link" href="/users/new">ユーザー新規登録</a>
+				
+			</div>
+			
+		</div>
+	</div>
 </body>
+
 </html>

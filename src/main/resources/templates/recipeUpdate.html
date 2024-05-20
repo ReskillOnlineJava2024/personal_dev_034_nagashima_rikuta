@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/css.css">
 <title>レシピ更新</title>
 </head>
 <body>
 	<header th:replace="header"></header>
 	<hr>
 	
-	<h1>レシピ情報変更</h1>
+	<h4>レシピ情報変更</h4>
 
 	<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
 		<table border="1">

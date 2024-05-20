@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>今日の献立</title>
+	<meta charset="UTF-8">
+	<title>今日の献立</title>
+	<link rel="stylesheet" type="text/css" href="/css/css.css">
 </head>
+
 <body>
-		<header th:replace="header"></header>
+
+	<header th:replace="header"></header>
 	<hr>
-	
+
 	<nav>
+		
 		<a href="/recipes?categoryId=1">和食</a>
 		<a href="/recipes?categoryId=2">洋食</a>
 		<a href="/recipes?categoryId=3">中華</a>
 		<a href="/recipes?categoryId=4">その他</a>
 		<a href="/recipes">全レシピ</a>
-	
+
 	</nav>
-	
 	<form action="/recipes" method="get">
-		<input type="text" name="keyword" placeholder="料理名" th:value="${keyword}">
-		<button>検索</button>
-	</form>
 		
+	<div class="searchArea" id="makeImg">
+			<input type="text" id="inText" class="searchText" name="keyword" placeholder="料理名" th:value="${keyword}">
+			<div>
+				<input type="submit" value="検索"class="searchButton">
+			</div>
+	</div>
+	</form>
+	
+	<form action="/recipes/random" method="post">
+		<input type="submit" value="ランダムで一つのレシピを提案">
+	</form>
+	<br>
+	
+	<a href="/recipes/new">新規登録</a><br>
+
 	<table border="1">
 		<tr>
 			<th>NO</th>
@@ -32,7 +48,7 @@
 		</tr>
 		<tr th:each="recipe:${recipes}">
 			<td th:text="${recipe.id}"></td>
-			<td><a th:href="@{'/recipes/'+${recipe.id}+'/all'}"th:text="${recipe.recipeName}"></a></td>
+			<td><a th:href="@{'/recipes/'+${recipe.id}+'/all'}" th:text="${recipe.recipeName}"></a></td>
 			<td th:text="${recipe.materials}"></td>
 			<td>
 				<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
@@ -45,8 +61,9 @@
 				</form>
 			</td>
 		</tr>
-	</table>	
+	</table>
 	<a href="/recipes/new">新規登録</a><br>
-	
+
 </body>
+
 </html>

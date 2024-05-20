@@ -1,6 +1,7 @@
 package com.example.demo.controller;//kou
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -92,6 +93,27 @@ public class RecipeController {
 		model.addAttribute("recipe", recipe);
 		return "recipeData";
 	}
+	
+	@PostMapping("/recipes/random")
+	public String rundam(
+			@PathVariable("id") Integer id, 
+			Model model) {
+		
+		List<RecipeEntity> recipeList = null;
+		recipeList = recipeRepository.findAll();
+		//recipelistのレングスを最大値に設定してランダム生成する。.length()
+//		Random rand = new Random();
+//		int dice = rand.nextInt(6) + 1;
+		Random rand = new Random();
+		int dice = rand.nextInt(recipeList.size());
+		id = dice;
+	
+		RecipeEntity recipe = recipeRepository.findById(id).get();
+		model.addAttribute("recipe", recipe);
+
+		return "recipeData";
+	}
+
 
 	// 更新処理
 	@PostMapping("/recipes/{id}/edit")

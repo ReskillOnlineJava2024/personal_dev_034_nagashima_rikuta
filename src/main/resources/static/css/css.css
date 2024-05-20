@@ -1,0 +1,123 @@
+@charset "UTF-8";/* 全体 */
+
+body {
+	background-color: #EFF0F7; /* 背景色  */
+	text-align: center; /* 中央寄せ */
+    min-width: 900px; /* 最小幅 */
+}
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header, nav, footer {
+	background-color: #45496a; /* 背景色 */
+	color: #ffffff; /* 文字色 */
+	padding-top: 5px; /* 内側余白(上) */
+	padding-bottom: 5px; /* 内側余白(下) */
+}
+/* ヘッダー、ナビゲーション内リンク */
+header a, nav a {
+	color: #ffffff;
+}
+/* ヘッダー内見出し */
+header h1 {
+	font-size: 20pt;
+	margin: 10px auto;
+}
+/* 仕切り線 */
+hr {
+	border-top: 2px dashed #7d8bae;
+}
+/* メイン */
+main {
+	background-color: #FFFFFF;
+	min-height: 50px;
+	padding: 20px;
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #7d8bae;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+}
+/* 表見出しセル */
+table th {
+	background: #7d8bae;
+	color: #ffffff;
+}
+/* 送信ボタン */
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #e5857b;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #f1b2b2;
+}
+
+.searchArea{
+  width          : 290px;              /* BOXの幅               */
+  height         : 34px;               /* BOXの高さ             */
+  margin         : auto;               /* サンプルを中心に寄せ  */
+  letter-spacing : 0.1em;              /* 文字間隔              */
+  font-weight    : bold;               /* 太字                  */
+  line-height    : 0;                  /* 標準の行高さ          */
+}
+ 
+ /* --- テキスト入力欄のSTYLE設定 --- */
+.searchArea .searchText {
+  display        : block;              /* ブロック化            */
+  float          : left;               /* 横並び                */
+  box-sizing     : border-box;         /* 枠線,余白を含んだ長さ */
+  height         : 34px;               /* 入力の高さ            */
+  width          : 170px;              /* 入力の幅              */
+  margin         : 0;                  /* 外余白                */
+  padding        : 0 17px;             /* 内余白                */
+  border         : 2px solid #59b300;  /* 枠線　幅,実践,色      */
+  border-radius  : 17px 0 0 17px;      /* 左上下の角丸          */
+  color          : #333;               /* 文字色                */
+  outline        : 0;                  /* 入力の薄い枠を非表示  */
+  font-size      : 22px;               /* フォントサイズ        */
+}
+ 
+ /* --- 検索ボタン欄のSTYLE設定 --- */
+.searchArea .searchButton {
+  float          : left;               /* 横並び                */
+  box-sizing     : border-box;         /* 枠線,余白を含んだ長さ */
+  height         : 34px;               /* 入力の高さ            */
+  margin         : 0;                  /* 外余白                */
+  padding        : 6px 10px;           /* 内余白                */
+  border         : none;               /* 枠線　幅,実践,色      */
+  border-radius  : 0 17px 17px 0;      /* 右上下の角丸          */
+  background     : #59b300;            /* ボタンの色            */
+  color          : #fff;               /* 文字色                */
+  cursor         : pointer;            /* カーソル設定          */
+  line-height    : 22px;               /* 1行の高さ             */
+  font-size      : 22px;               /* フォントサイズ        */
+}
+ 
+ /* --- 検索ボタン欄にフォーカスか来たとき --- */
+.searchArea .searchText:focus {
+  background     : #cfe7ff;            /* フォーカス時の背景色  */
+}
+ 
+ /* --- 検索ボタン内のアイコンSTYLE設定 --- */
+.searchArea .searchImg {
+  display        : inline-block;       /* インラインブロック化  */
+  width          : auto;               /* 幅は高さに合わせる    */
+  height         : 12px;               /* 画像の高さ            */
+  margin         : 0 3px 0 0;          /* 余白                  */
+  vertical-align : middle;             /* 横の文字位置          */
+}
+ 
+ /* --- IEの入力エリア右側×消し -------------------------*/
+.searchArea .searchText::-ms-clear {
+  display        : none;               /* ×を消す              */
+}
+</style>
