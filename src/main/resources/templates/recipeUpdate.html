@@ -13,6 +13,7 @@
 
 	<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
 		<table border="1">
+			
 			<tr>
 				<th>カテゴリー</th>
 				<td>
@@ -40,6 +41,7 @@
 					<textarea name="contents">[[${recipe.contents}]]</textarea>
 				</td>
 			</tr>
+			
 		</table>
 		<input type="submit" value="更新">
 	</form>

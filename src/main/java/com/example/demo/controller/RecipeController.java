@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.RecipeEntity;
+import com.example.demo.model.Account;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.RecipeRepository;
 
@@ -23,6 +24,10 @@ public class RecipeController {
 	
 	@Autowired
 	CategoryRepository categoryRepository;
+	
+	@Autowired
+	Account account;
+
 
 	// 一覧表示
 	@GetMapping("/recipes")
@@ -47,6 +52,7 @@ public class RecipeController {
 		}
 
 		model.addAttribute("keyword", keyword);
+//		model.addAttribute("userName", account.getUserName());
 		model.addAttribute("recipes", recipeList);
 
 		return "recipeList";
@@ -66,7 +72,7 @@ public class RecipeController {
 			@RequestParam("materials") String materials,
 			@RequestParam("contents") String contents) {
 
-		RecipeEntity recipe = new RecipeEntity(categoryId, recipeName,materials,contents);
+		RecipeEntity recipe = new RecipeEntity(categoryId,account.getUserName(), recipeName,materials,contents);
 		recipeRepository.save(recipe);
 
 		return "redirect:/recipes";
@@ -88,7 +94,7 @@ public class RecipeController {
 	public String showAll(
 			@PathVariable("id") Integer id, 
 			Model model) {
-
+		
 		RecipeEntity recipe = recipeRepository.findById(id).get();
 		model.addAttribute("recipe", recipe);
 		return "recipeData";
@@ -96,21 +102,16 @@ public class RecipeController {
 	
 	@PostMapping("/recipes/random")
 	public String rundam(
-			@PathVariable("id") Integer id, 
 			Model model) {
 		
 		List<RecipeEntity> recipeList = null;
 		recipeList = recipeRepository.findAll();
-		//recipelistのレングスを最大値に設定してランダム生成する。.length()
-//		Random rand = new Random();
-//		int dice = rand.nextInt(6) + 1;
+		
 		Random rand = new Random();
-		int dice = rand.nextInt(recipeList.size());
-		id = dice;
-	
-		RecipeEntity recipe = recipeRepository.findById(id).get();
+		Integer num = rand.nextInt(recipeList.size())+ 1;
+		RecipeEntity recipe = recipeRepository.findById(num).get();
 		model.addAttribute("recipe", recipe);
-
+		
 		return "recipeData";
 	}
 

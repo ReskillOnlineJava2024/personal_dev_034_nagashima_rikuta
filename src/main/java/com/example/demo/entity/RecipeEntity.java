@@ -18,8 +18,9 @@ public class RecipeEntity {
 	
 	@Column(name = "category_id")
 	private Integer categoryId;
-	@Column(name = "user_id")
-	private Integer userId;
+
+	private String name;
+	
 	@Column(name = "recipe_name")
 	private String recipeName;
 	
@@ -34,8 +35,8 @@ public class RecipeEntity {
 		return categoryId;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public String getName() {
+		return name;
 	}
 
 	public String getRecipeName() {
@@ -50,10 +51,10 @@ public class RecipeEntity {
 		return contents;
 	}
 	
-	public RecipeEntity(Integer id,Integer categoryId,Integer userId,String recipeName,String materials,String contents) {
+	public RecipeEntity(Integer id,Integer categoryId,String name,String recipeName,String materials,String contents) {
 		this.id=id;
 		this.categoryId=categoryId;
-		this.userId=userId;
+		this.name=name;
 		this.recipeName=recipeName;
 		this.materials=materials;
 		this.contents=contents;
@@ -74,6 +75,17 @@ public class RecipeEntity {
 		this.contents=contents;
 	}
 	
+	public RecipeEntity(Integer categoryId, String name,String recipeName, String materials, String contents) {	
+		this.categoryId=categoryId;
+		this.name=name;
+		this.recipeName=recipeName;
+		this.materials=materials;
+		this.contents=contents;
+	}
+	
+
 	public RecipeEntity() {		
 	}
+
+
 }

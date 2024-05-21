@@ -23,7 +23,7 @@ CREATE TABLE recipes
 (
 id SERIAL PRIMARY KEY,
 category_id INTEGER,
-user_id INTEGER,
+name VARCHAR(50),
 recipe_name VARCHAR(30),
 materials VARCHAR(200), 
 contents VARCHAR(500)

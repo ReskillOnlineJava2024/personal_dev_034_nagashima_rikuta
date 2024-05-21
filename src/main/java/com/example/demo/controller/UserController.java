@@ -29,8 +29,14 @@ public class UserController {
 
 	//ログイン画面
 	@GetMapping({ "/login", "/logout" })
-	public String index() {
+	public String index(
+			@RequestParam(name = "error", defaultValue = "") String error,
+			Model model) {
 		session.invalidate();
+		
+		if (error.equals("notLoggedIn")) {
+			model.addAttribute("message", "ログインしてください");
+		}
 		return "login";
 	}
 	 //登録フォーム
@@ -40,13 +46,17 @@ public class UserController {
 	}
 
 	//ログインボタンクリック
-	@PostMapping("/login")
+	@PostMapping({ "/", "/login" })
 	public String login(
 			@RequestParam("userName") String userName,
 			@RequestParam("password") String password,
 			Model model) {
+		
+		session.invalidate();
 
 		List<UserEntity> userList = userRepository.findByUserNameAndPassword(userName, password);
+		
+		
 		if (userList == null || userList.size() == 0) {
 			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
 			return "login";
@@ -59,6 +69,7 @@ public class UserController {
 			model.addAttribute("message", "パスワードを入力してください");
 			return "login";
 		}
+		
 
 		// セッション管理されたアカウント情報に名前をセット
 		account.setUserName(userName);

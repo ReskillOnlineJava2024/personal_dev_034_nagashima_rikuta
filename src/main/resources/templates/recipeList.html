@@ -31,9 +31,13 @@
 	</div>
 	</form>
 	
+<!--	<a href="/recipes?id=1/randum"></a>-->
+	
+<!--	<form th:action="/recipes/random/recipe?id=1" method="post">-->
 	<form action="/recipes/random" method="post">
 		<input type="submit" value="ランダムで一つのレシピを提案">
 	</form>
+	
 	<br>
 	
 	<a href="/recipes/new">新規登録</a><br>
@@ -43,13 +47,15 @@
 			<th>NO</th>
 			<th>料理名</th>
 			<th>材料</th>
+			<th>レシピ作成者</th>
 			<th>編集</th>
 			<th>削除</th>
 		</tr>
 		<tr th:each="recipe:${recipes}">
 			<td th:text="${recipe.id}"></td>
 			<td><a th:href="@{'/recipes/'+${recipe.id}+'/all'}" th:text="${recipe.recipeName}"></a></td>
-			<td th:text="${recipe.materials}"></td>
+			<td th:text="${recipe.materials}"cols="30" ></td>
+			<td th:text="${recipe.name}"></td>
 			<td>
 				<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
 					<input type="submit" value="更新">
