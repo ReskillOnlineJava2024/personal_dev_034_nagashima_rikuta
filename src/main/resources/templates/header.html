@@ -1,3 +1,7 @@
 <header>
-	<h1><a href="/recipes">今日の献立</a></h1>
+	<div align="right">
+	<span th:text="${@account.userName}+' さんがログイン中'"></span>
+	<br>
+	<a href="/logout">ログアウト</a>
+	</div>
 </header>

@@ -8,23 +8,36 @@
 </head>
 
 <body>
-	<header th:replace="header"></header>
-	<hr>
-
 
 	<article>
 
 		<div class="sidebar">
 			<p>
+			<h1>今日の献立</h1>
 
-				<span th:text="${@account.userName}+' さんがログイン中'"></span>
-				<br>
-				<a href="/logout">ログアウト</a>
+			<br>
+			<span th:text="${@account.userName}+' さんがログイン中'"></span>
+			&nbsp;&nbsp;
+			<a href="/logout">ログアウト</a>
+			<br>
+			<br>
 
-				<hr>
 
-				料理名で検索する
-				<br>
+			<hr>
+
+			<br>
+			あなたのレシピを新規で登録する
+			<br>
+			<!--				時間があればボタンに変更-->
+			<!--				<button onclick="location.href='URL'">サンプル</button>-->
+			<a href="/recipes/new">レシピ新規登録</a>
+			<br>
+			<br>
+			<hr>
+			<br>
+
+			料理名で検索する
+			<br>
 
 			<form action="/recipes" method="get" div class="searchArea" id="makeImg">
 
@@ -35,6 +48,7 @@
 				</div>
 
 			</form>
+			<br>
 
 
 			<hr>
@@ -65,10 +79,11 @@
 		<div class="content">
 			<p>
 
-			<h4>レシピ情報変更</h4>
+			<h2>レシピ情報変更</h2>
 
 			<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
 				<table border="1">
+					<span th:text="${message}" style="color:red;"></span>
 
 					<tr>
 						<th>カテゴリー</th>
@@ -82,24 +97,28 @@
 					<tr>
 						<th>料理名</th>
 						<td>
-							<input type="text" name="recipeName" th:value="${recipe.recipeName}">
+							<input type="text" name="recipeName" th:value="${recipe.recipeName}"cols="40">
 						</td>
 					</tr>
 					<tr>
 						<th>材料</th>
 						<td>
-							<input type="text" name="materials" th:value="${recipe.materials}">
+							<textarea name="materials"cols="60"rows="3">[[${recipe.materials}]]</textarea>
 						</td>
 					</tr>
 					<tr>
 						<th>作り方</th>
 						<td>
-							<textarea name="contents">[[${recipe.contents}]]</textarea>
+							<textarea name="contents"cols="60"rows="12">[[${recipe.contents}]]</textarea>
 						</td>
 					</tr>
 
 				</table>
-				<input type="submit" value="更新">
+				<input type="submit" value="更新"class="button3">
+			</form>
+			<br>
+			<form action="/recipes" method="get">
+				<input type="submit" value="一覧に戻る"class="button2">
 			</form>
 		</div>
 		</p>

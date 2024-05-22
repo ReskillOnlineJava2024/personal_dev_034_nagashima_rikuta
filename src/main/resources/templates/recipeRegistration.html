@@ -8,22 +8,37 @@
 </head>
 
 <body>
-	<header th:replace="header"></header>
-	<hr>
+
 
 	<article>
 
 		<div class="sidebar">
 			<p>
+			<h1>今日の献立</h1>
 
-				<span th:text="${@account.userName}+' さんがログイン中'"></span>
-				<br>
-				<a href="/logout">ログアウト</a>
+			<br>
+			<span th:text="${@account.userName}+' さんがログイン中'"></span>
+			&nbsp;&nbsp;
+			<a href="/logout">ログアウト</a>
+			<br>
+			<br>
 
-				<hr>
 
-				料理名で検索する
-				<br>
+			<hr>
+
+			<br>
+			あなたのレシピを新規で登録する
+			<br>
+			<!--				時間があればボタンに変更-->
+			<!--				<button onclick="location.href='URL'">サンプル</button>-->
+			<a href="/recipes/new">レシピ新規登録</a>
+			<br>
+			<br>
+			<hr>
+			<br>
+
+			料理名で検索する
+			<br>
 
 			<form action="/recipes" method="get" div class="searchArea" id="makeImg">
 
@@ -34,6 +49,7 @@
 				</div>
 
 			</form>
+			<br>
 
 
 			<hr>
@@ -64,10 +80,11 @@
 		<div class="content">
 			<p>
 
-			<h1>新規レシピ作成</h1>
+			<h2>新規レシピ作成</h2>
 
 			<form action="/recipes/add" method="post">
 				<table border="1">
+					<span th:text="${message}" style="color:red;"></span>
 					<tr>
 						<th>カテゴリー</th>
 						<td>
@@ -80,23 +97,27 @@
 					<tr>
 						<th>料理名</th>
 						<td>
-							<input type="text" name="recipeName">
+							<input type="text" name="recipeName"cols="40">
 						</td>
 					</tr>
 					<tr>
 						<th>材料</th>
 						<td>
-							<input type="text" name="materials" cols="30">
+							<textarea name="materials"cols="60"rows="3"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<th>作り方</th>
 						<td>
-							<textarea name="contents" cols="30"></textarea>
+							<textarea name="contents"cols="60"rows="12"></textarea>
 						</td>
 					</tr>
 				</table>
-				<input type="submit" value="新規作成">
+				<input type="submit" value="新規作成"class="button4">
+			</form>
+			<br>
+			<form action="/recipes" method="get">
+				<input type="submit" value="一覧に戻る"class="button2">
 			</form>
 		</div>
 		</p>

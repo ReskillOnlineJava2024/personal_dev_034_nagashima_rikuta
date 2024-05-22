@@ -60,17 +60,44 @@ public class RecipeController {
 
 	// 新規登録画面表示
 	@GetMapping("/recipes/new")
-	public String createRecipes() {
+	public String createRecipes(
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(value = "recipeName", defaultValue = "") String recipeName,
+			@RequestParam(value = "materials", defaultValue = "") String materials,
+			@RequestParam(value = "contents", defaultValue = "") String contents,
+			Model model) {
+//		model.addAttribute("categoryId", categoryId);
+//		model.addAttribute("recipeName", recipeName);
+//		model.addAttribute("materials", materials);
+//		model.addAttribute("contents", contents);
 		return "recipeRegistration";
 	}
 
 	// 新規登録処理
 	@PostMapping("/recipes/add")
 	public String add(
-			@RequestParam("categoryId") Integer categoryId,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
 			@RequestParam("recipeName") String recipeName,
 			@RequestParam("materials") String materials,
-			@RequestParam("contents") String contents) {
+			@RequestParam("contents") String contents,
+			Model model) {
+		
+		if (categoryId == null || categoryId== 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeRegistration";
+		}
+		if (recipeName == null || recipeName.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeRegistration";
+		}
+		if (materials == null || materials.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeRegistration";
+		}
+		if (contents == null || contents.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeRegistration";
+		}
 
 		RecipeEntity recipe = new RecipeEntity(categoryId,account.getUserName(), recipeName,materials,contents);
 		recipeRepository.save(recipe);
@@ -120,12 +147,30 @@ public class RecipeController {
 	@PostMapping("/recipes/{id}/edit")
 	public String update(
 			@PathVariable("id") Integer id,
-			@RequestParam("categoryId") Integer categoryId,
-			@RequestParam("recipeName") String recipename,
+			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam("recipeName") String recipeName,
 			@RequestParam("materials") String materials,
-			@RequestParam("contents") String contents) {
+			@RequestParam("contents") String contents,
+			Model model) {
 
-		RecipeEntity recipe = new RecipeEntity(id,categoryId,recipename,materials,contents);
+		if (categoryId == null || categoryId== 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeUpdate";
+		}
+		if (recipeName == null || recipeName.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeUpdate";
+		}
+		if (materials == null || materials.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeUpdate";
+		}
+		if (contents == null || contents.length() == 0) {
+			model.addAttribute("message", "入力項目をすべて入力してください");
+			return "recipeUpdate";
+		}
+		
+		RecipeEntity recipe = new RecipeEntity(id,categoryId,account.getUserName(),recipeName,materials,contents);
 		recipeRepository.save(recipe);
 	
 		return "redirect:/recipes";

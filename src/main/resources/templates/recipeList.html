@@ -9,22 +9,26 @@
 
 <body>
 
-	<header th:replace="header"></header>
-	<hr>
-
 	<article>
 
 		<div class="sidebar">
 			<p>
+			<h1>今日の献立</h1>
 
-				<span th:text="${@account.userName}+' さんがログイン中'"></span>
-				<br>
-				<a href="/logout">ログアウト</a>
+			<br>
+			<span th:text="${@account.userName}+' さんがログイン中'"></span>
+			&nbsp;&nbsp;
+			<a href="/logout">ログアウト</a>
+			<br>
+			<br>
 
-				<hr>
 
-				料理名で検索する
-				<br>
+			
+			<hr>
+			<br>
+
+			料理名で検索する
+			<br>
 
 			<form action="/recipes" method="get" div class="searchArea" id="makeImg">
 
@@ -35,6 +39,7 @@
 				</div>
 
 			</form>
+			<br>
 
 
 			<hr>
@@ -50,6 +55,16 @@
 			<a href="/recipes?categoryId=4">その他</a>
 			<a href="/recipes">全レシピ</a>
 
+			<hr>
+
+			<br>
+			あなたのレシピを新規で登録する
+			<br>
+			<!--				時間があればボタンに変更-->
+			<!--				<button onclick="location.href='URL'">サンプル</button>-->
+			<a href="/recipes/new">レシピ新規登録</a>
+			<br>
+			<br>
 
 			<hr>
 			<br>
@@ -63,11 +78,13 @@
 
 		</div>
 
+
 		<div class="content">
+
 			<p>
 
 			<h2>投稿されているメニュー一覧</h2>
-			
+
 
 			<table border="1">
 				<tr>
@@ -85,19 +102,17 @@
 					<td th:text="${recipe.name}"></td>
 					<td>
 						<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
-							<input type="submit" value="更新">
+							<input type="submit" value="更新" class="button5">
 						</form>
 					</td>
 					<td>
 						<form th:action="'/recipes/'+${recipe.id}+'/delete'" method="post">
-							<input type="submit" value="削除">
+							<input type="submit" value="削除" class="button6">
 						</form>
 					</td>
 				</tr>
 			</table>
 
-			
-			<a href="/recipes/new">レシピ新規登録</a><br>
 
 			</p>
 		</div>

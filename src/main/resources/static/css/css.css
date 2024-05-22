@@ -14,22 +14,26 @@ header {
 }
 nav,span{
 	color: #ffdd00;
+	text-align    : left;
 }
 
 nav,a{
 	color: rgb(50, 155, 205);
 }
+input{
+	font-weight:bold;
+	font-size     : 14pt; 
+}
+textarea{
+	  font-size     : 13pt; 
+}
 
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
-	color: rgb(255, 255, 255);
+	color: rgb(50, 155, 205);
 }
 /* ヘッダー内見出し */
-header h1 {
-	font-size: 28pt;
-	margin: 10px auto;
-	font-weight:bold;
-}
+
 /* 仕切り線 */
 hr {
 	border-top: 2px dashed #7d8bae;
@@ -43,15 +47,15 @@ hr {
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 16px 13px;   /* 余白       */
-  background    : #e99643;     /* 背景色     */
+  background    : #f3a125;     /* 背景色     */
   color         : #323232;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   border        : 2px solid #e99643;    /* 枠の指定 */
 }
 .button:hover {
-  color         : #e99643;     /* 背景色     */
-  background    : #323232;     /* 文字色     */
+  color         : #323232;     /* 背景色     */
+  background    : #bf770b;     /* 文字色     */
 }
 
 h2{
@@ -73,29 +77,132 @@ table {
 }
 /* 表見出しセル */
 table th {
-	font-size     : 18pt; 
+	font-size     : 13pt; 
 	background: #7d8bae;
 	color: #ffffff;
-	padding: 5px;
+	padding: 3px;
 }
 
 table td {
-	font-size     : 18pt; 
+	font-size     : 14pt; 
+	font-weight:bold;
 }
 
-/* 送信ボタン */
+/* 送信ボタン#e5857b #ffffff */
 button {
 	margin: 2px;
 	padding: 5px 20px;
-	background-color: #e5857b;
-	color: #ffffff;
+	background-color: #ffffff;
+	color:#e5857b ;
 	border: none;
 	width:150px;
 	cursor: pointer;
 }
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
-	background-color: #f1b2b2;
+	color:#ffffff;
+	background: #efb55d;
+}
+
+.button2 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 50px;   /* 余白       */
+  background    : #1a2a67;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #1a2a67;    /* 枠の指定 */
+}
+.button2:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #1a2a67;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+
+.button3 {
+  font-weight:bold;
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 55px;   /* 余白       */
+  background    : #f1f100;     /* 背景色     */
+  color         : #111111;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ   */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+/*  border        : 2px solid #f1f100;   */
+}
+.button3:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #111111;     /* 背景色     */
+  background    : #cdcd24;     /* 文字色     */
+}
+
+.button4 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 16pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 63px;   /* 余白       */
+  background    : #ffffff;     /* 背景色     */
+  color         : #111111;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ffffff;    /* 枠の指定 */
+}
+.button4:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #111111;     /* 背景色     */
+  background    : #ededed;     /* 文字色     */
+}
+
+.button5 {
+  font-weight:bold;
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 10px 34px;   /* 余白       */
+  background    : #f1f100;     /* 背景色     */
+  color         : #111111;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ffffff;    /* 枠の指定 */
+}
+.button5:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #111111;     /* 背景色     */
+  background    : #cdcd24;     /* 文字色     */
+}
+.button6 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 10px 34px;   /* 余白       */
+  background    : #ff0606;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 4px 4px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ff0606;    /* 枠の指定 */
+}
+.button6:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ffffff;     /* 背景色     */
+  background    : #d82d2d;     /* 文字色     */
 }
 
 
