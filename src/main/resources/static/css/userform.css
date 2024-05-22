@@ -3,6 +3,14 @@
   text-align: center;
 }
 
+.user-link {
+  font-size: 14px;
+  color: #444;
+  display: block;
+  margin-top: 12px;
+  text-align    : center;
+}
+
 .container {
   width: 300px;
   margin: 0 auto;

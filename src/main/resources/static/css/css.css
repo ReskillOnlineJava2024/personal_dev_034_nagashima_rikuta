@@ -1,51 +1,88 @@
 @charset "UTF-8";/* 全体 */
 
 body {
-	background-color: #EFF0F7; /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	background-color: rgb(241, 241, 241); 
+	text-align: center;  
+    min-width: 900px;  
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color: #45496a; /* 背景色 */
+header {
+	background-color:  rgb(22, 23, 35); /* 背景色 */
 	color: #ffffff; /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
 }
+nav,span{
+	color: #ffdd00;
+}
+
+nav,a{
+	color: rgb(50, 155, 205);
+}
+
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
-	color: #ffffff;
+	color: rgb(255, 255, 255);
 }
 /* ヘッダー内見出し */
 header h1 {
-	font-size: 20pt;
+	font-size: 28pt;
 	margin: 10px auto;
+	font-weight:bold;
 }
 /* 仕切り線 */
 hr {
 	border-top: 2px dashed #7d8bae;
 }
-/* メイン */
-main {
-	background-color: #FFFFFF;
-	min-height: 50px;
-	padding: 20px;
+
+.button {
+  display       : inline-block;
+  border-radius : 7%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  font-weight:bold;
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 16px 13px;   /* 余白       */
+  background    : #e99643;     /* 背景色     */
+  color         : #323232;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #e99643;    /* 枠の指定 */
 }
+.button:hover {
+  color         : #e99643;     /* 背景色     */
+  background    : #323232;     /* 文字色     */
+}
+
+h2{
+	font-size     : 20pt; 
+	background: #0c132f;
+	color: rgb(255, 255, 255);
+	padding: 5px;
+}
+
 /* 表線 */
-table, th, td {
+table, th, td {  
 	border-collapse: collapse;
 	border: 1px solid #7d8bae;
 }
 /* 表 */
 table {
     margin: 5px auto;
-    min-width: 800px;
+    min-width: 900px;
 }
 /* 表見出しセル */
 table th {
+	font-size     : 18pt; 
 	background: #7d8bae;
 	color: #ffffff;
+	padding: 5px;
 }
+
+table td {
+	font-size     : 18pt; 
+}
+
 /* 送信ボタン */
 button {
 	margin: 2px;
@@ -61,13 +98,17 @@ button:hover {
 	background-color: #f1b2b2;
 }
 
+
+/* --- 検索全体のBOX (サンプル用)--- */
 .searchArea{
   width          : 290px;              /* BOXの幅               */
-  height         : 34px;               /* BOXの高さ             */
+  height         : 27px;               /* BOXの高さ             */
   margin         : auto;               /* サンプルを中心に寄せ  */
   letter-spacing : 0.1em;              /* 文字間隔              */
   font-weight    : bold;               /* 太字                  */
   line-height    : 0;                  /* 標準の行高さ          */
+  position: relative;
+  left:30px;
 }
  
  /* --- テキスト入力欄のSTYLE設定 --- */
@@ -75,31 +116,31 @@ button:hover {
   display        : block;              /* ブロック化            */
   float          : left;               /* 横並び                */
   box-sizing     : border-box;         /* 枠線,余白を含んだ長さ */
-  height         : 34px;               /* 入力の高さ            */
+  height         : 27px;               /* 入力の高さ            */
   width          : 170px;              /* 入力の幅              */
   margin         : 0;                  /* 外余白                */
-  padding        : 0 17px;             /* 内余白                */
-  border         : 2px solid #59b300;  /* 枠線　幅,実践,色      */
-  border-radius  : 17px 0 0 17px;      /* 左上下の角丸          */
+  padding        : 0 13px;             /* 内余白                */
+  border         : 2px solid #009000;  /* 枠線　幅,実践,色      */
+  border-radius  : 13px 0 0 13px;      /* 左上下の角丸          */
   color          : #333;               /* 文字色                */
   outline        : 0;                  /* 入力の薄い枠を非表示  */
-  font-size      : 22px;               /* フォントサイズ        */
+  font-size      : 15px;               /* フォントサイズ        */
 }
  
  /* --- 検索ボタン欄のSTYLE設定 --- */
 .searchArea .searchButton {
   float          : left;               /* 横並び                */
   box-sizing     : border-box;         /* 枠線,余白を含んだ長さ */
-  height         : 34px;               /* 入力の高さ            */
+  height         : 27px;               /* 入力の高さ            */
   margin         : 0;                  /* 外余白                */
   padding        : 6px 10px;           /* 内余白                */
   border         : none;               /* 枠線　幅,実践,色      */
-  border-radius  : 0 17px 17px 0;      /* 右上下の角丸          */
-  background     : #59b300;            /* ボタンの色            */
+  border-radius  : 0 13px 13px 0;      /* 右上下の角丸          */
+  background     : #009000;            /* ボタンの色            */
   color          : #fff;               /* 文字色                */
   cursor         : pointer;            /* カーソル設定          */
-  line-height    : 22px;               /* 1行の高さ             */
-  font-size      : 22px;               /* フォントサイズ        */
+  line-height    : 15px;               /* 1行の高さ             */
+  font-size      : 15px;               /* フォントサイズ        */
 }
  
  /* --- 検索ボタン欄にフォーカスか来たとき --- */
@@ -107,17 +148,31 @@ button:hover {
   background     : #cfe7ff;            /* フォーカス時の背景色  */
 }
  
- /* --- 検索ボタン内のアイコンSTYLE設定 --- */
-.searchArea .searchImg {
-  display        : inline-block;       /* インラインブロック化  */
-  width          : auto;               /* 幅は高さに合わせる    */
-  height         : 12px;               /* 画像の高さ            */
-  margin         : 0 3px 0 0;          /* 余白                  */
-  vertical-align : middle;             /* 横の文字位置          */
-}
- 
  /* --- IEの入力エリア右側×消し -------------------------*/
 .searchArea .searchText::-ms-clear {
   display        : none;               /* ×を消す              */
 }
-</style>
+
+/*body {*/
+/*   font-family:'Noto Sans JP',sans-serif;*/
+/*   background-color:#f6f5f4;*/
+/*}*/
+
+.sidebar {
+  background-color: rgb(22, 23, 35); /* 背景色 */
+  color: #ffffff;
+  width:280px;
+  height: 1100px; 
+  text-align:center;
+} 
+
+.content {
+/*  width:300px;*/
+/*  height:300px;*/
+  text-align:center;
+  margin-left:10px;
+}
+
+article {
+  display:flex;/*サイドバーとメインコンテンツを横並びにする                指定をした*/
+}

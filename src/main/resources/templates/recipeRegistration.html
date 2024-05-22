@@ -1,47 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>レシピ新規作成</title>
-<link rel="stylesheet" type="text/css" href="/css/css.css">
+	<meta charset="UTF-8">
+	<title>レシピ新規作成</title>
+	<link rel="stylesheet" type="text/css" href="/css/css.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<hr>
-	
-	<h1>新規レシピ作成</h1>
 
-	<form action="/recipes/add" method="post">
-		<table border="1">
-			<tr>
-				<th>カテゴリー</th>
-				<td>
-					<input type="radio"name="categoryId"value="1">和食
-					<input type="radio"name="categoryId"value="2">洋食
-					<input type="radio"name="categoryId"value="3">中華
-					<input type="radio"name="categoryId"value="4">その他
-				</td>
-			</tr>
-			<tr>
-				<th>料理名</th>
-				<td>
-					<input type="text" name="recipeName">
-				</td>
-			</tr>
-			<tr>
-				<th>材料</th>
-				<td>
-					<input type="text" name="materials"cols="30" >
-				</td>
-			</tr>
-			<tr>
-				<th>作り方</th>
-				<td>
-					<textarea name="contents"cols="30" ></textarea>
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="新規作成">
-	</form>
+	<article>
+
+		<div class="sidebar">
+			<p>
+
+				<span th:text="${@account.userName}+' さんがログイン中'"></span>
+				<br>
+				<a href="/logout">ログアウト</a>
+
+				<hr>
+
+				料理名で検索する
+				<br>
+
+			<form action="/recipes" method="get" div class="searchArea" id="makeImg">
+
+				<input type="text" id="inText" class="searchText" name="keyword" placeholder="料理名"
+					th:value="${keyword}">
+				<div>
+					<input type="submit" value="検索" class="searchButton">
+				</div>
+
+			</form>
+
+
+			<hr>
+
+			料理別で絞り込む
+			<br>
+			<a href="/recipes?categoryId=1">和食</a>
+			<a href="/recipes?categoryId=2">洋食</a>
+			<a href="/recipes?categoryId=3">中華</a>
+
+			<br>
+
+			<a href="/recipes?categoryId=4">その他</a>
+			<a href="/recipes">全レシピ</a>
+
+
+			<hr>
+			<br>
+
+			<form action="/recipes/random" method="post">
+				<input type="submit" value="ランダムでレシピを提案" class="button">
+			</form>
+			<br>
+
+			<hr>
+
+		</div>
+		<div class="content">
+			<p>
+
+			<h1>新規レシピ作成</h1>
+
+			<form action="/recipes/add" method="post">
+				<table border="1">
+					<tr>
+						<th>カテゴリー</th>
+						<td>
+							<input type="radio" name="categoryId" value="1">和食
+							<input type="radio" name="categoryId" value="2">洋食
+							<input type="radio" name="categoryId" value="3">中華
+							<input type="radio" name="categoryId" value="4">その他
+						</td>
+					</tr>
+					<tr>
+						<th>料理名</th>
+						<td>
+							<input type="text" name="recipeName">
+						</td>
+					</tr>
+					<tr>
+						<th>材料</th>
+						<td>
+							<input type="text" name="materials" cols="30">
+						</td>
+					</tr>
+					<tr>
+						<th>作り方</th>
+						<td>
+							<textarea name="contents" cols="30"></textarea>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" value="新規作成">
+			</form>
+		</div>
+		</p>
+	</article>
 </body>
+
 </html>

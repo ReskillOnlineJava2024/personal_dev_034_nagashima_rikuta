@@ -75,3 +75,7 @@ transition: border .5s;
   display: block;
   margin-top: 12px;
 }
+
+.span{
+	  text-align    : center;
+}
