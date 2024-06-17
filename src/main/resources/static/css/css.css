@@ -83,10 +83,34 @@ table th {
 	padding: 3px;
 }
 
+#mt {
+	font-size     : 13pt; 
+	font-weight:bold;
+	width:350px;
+}
+
+#mt3 {
+	font-size     : 13pt; 
+	font-weight:bold;
+	width:750px;
+}
+
+#mt2 {
+	font-size     : 13pt; 
+	font-weight:bold;
+	width:550px;
+	text-align:left;
+	margin-left:10px;
+ 	position: relative;
+ 	padding-left: 30px;
+ 	padding-right: 30px;
+}
+
 table td {
 	font-size     : 14pt; 
 	font-weight:bold;
 }
+
 
 /* 送信ボタン#e5857b #ffffff */
 button {
@@ -271,6 +295,7 @@ button:hover {
   width:280px;
   height: 1100px; 
   text-align:center;
+  position:fixed;
 } 
 
 .content {
@@ -278,6 +303,8 @@ button:hover {
 /*  height:300px;*/
   text-align:center;
   margin-left:10px;
+  position: relative;
+  left:300px;
 }
 
 article {

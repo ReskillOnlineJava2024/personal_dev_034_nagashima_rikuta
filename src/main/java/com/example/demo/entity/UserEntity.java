@@ -35,6 +35,10 @@ public class UserEntity {
 		return password;
 	}
 	
+	public UserEntity(String userName) {
+		this.userName=userName;
+	}
+	
 	public UserEntity(String userName, String password) {
 		this.userName=userName;
 		this.password=password;

@@ -13,5 +13,7 @@ public interface RecipeRepository extends JpaRepository<RecipeEntity, Integer> {
 
 	List<RecipeEntity> findByCategoryId(Integer categoryId);
 
+	List<RecipeEntity> findAllByOrderByIdAsc();
+
 
 }

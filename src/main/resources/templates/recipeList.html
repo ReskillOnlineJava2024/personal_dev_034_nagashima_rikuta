@@ -17,7 +17,7 @@
 
 			<br>
 			<span th:text="${@account.userName}+' さんがログイン中'"></span>
-			&nbsp;&nbsp;
+			&nbsp;&nbsp;<br>
 			<a href="/logout">ログアウト</a>
 			<br>
 			<br>
@@ -42,8 +42,6 @@
 			<br>
 
 
-			<hr>
-
 			料理別で絞り込む
 			<br>
 			<a href="/recipes?categoryId=1">和食</a>
@@ -54,7 +52,9 @@
 
 			<a href="/recipes?categoryId=4">その他</a>
 			<a href="/recipes">全レシピ</a>
-
+			
+			<br>
+			<br>
 			<hr>
 
 			<br>
@@ -84,6 +84,7 @@
 			<p>
 
 			<h2>投稿されているメニュー一覧</h2>
+			<span th:text="${message}" style="color:red;"></span>
 
 
 			<table border="1">
@@ -93,21 +94,15 @@
 					<th>材料</th>
 					<th>レシピ作成者</th>
 					<th>編集</th>
-					<th>削除</th>
 				</tr>
 				<tr th:each="recipe:${recipes}">
 					<td th:text="${recipe.id}"></td>
 					<td><a th:href="@{'/recipes/'+${recipe.id}+'/all'}" th:text="${recipe.recipeName}"></a></td>
-					<td th:text="${recipe.materials}" cols="30"></td>
+					<td th:text="${recipe.materials}" id="mt" ></td>
 					<td th:text="${recipe.name}"></td>
 					<td>
 						<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="get">
 							<input type="submit" value="更新" class="button5">
-						</form>
-					</td>
-					<td>
-						<form th:action="'/recipes/'+${recipe.id}+'/delete'" method="post">
-							<input type="submit" value="削除" class="button6">
 						</form>
 					</td>
 				</tr>

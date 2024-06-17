@@ -86,6 +86,18 @@ public class UserController {
 
 		UserEntity user = new UserEntity(userName,password);
 		
+		List<UserEntity> userList = userRepository.findByUserName(userName);
+		
+//		if (userName.equals(account.getUserName())) {
+//			model.addAttribute("message", "その名前は使用済みです");
+//			return "userRegistration";
+//		}
+		if (userList.size() > 0) {
+			model.addAttribute("message", "その名前は使用済みです");
+			return "userRegistration";
+		}
+		
+		
 		if (userName == null || userName.length() == 0) {
 			model.addAttribute("message", "名前を入力してください");
 			return "userRegistration";
@@ -94,8 +106,28 @@ public class UserController {
 			model.addAttribute("message", "パスワードを入力してください");
 			return "userRegistration";
 		}
-		userRepository.save(user);
+		if (userName.length() >= 20 || userName.length() <= 3) {
+			model.addAttribute("message", "名前は4文字以上20文字以下で入力してください");
+			return "userRegistration";
+		}
+		if (password.length() >= 20 || password.length() <= 3) {
+			model.addAttribute("message", "パスワードは4文字以上20文字以下で入力してください");
+			return "userRegistration";
+		}
+		if (!password.matches("^(?=.*[a-zA-Z])[a-zA-Z0-9]*$"))
+		{
+			model.addAttribute("message","パスワードはアルファベットのみで入力してください");
+			return "userRegistration";
+		}
+	
+//		if (userName.equals(user.getName())) {
+//			model.addAttribute("message", "その名前は使用済みです");
+//			return "userRegistration";
+//			
+//		}else {
+				userRepository.save(user);
 
-		return "redirect:/login";
+				return "redirect:/login";
+//				}
 	}
 }

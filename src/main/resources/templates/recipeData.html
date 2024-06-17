@@ -9,7 +9,6 @@
 
 <body>
 
-
 	<article>
 
 		<div class="sidebar">
@@ -18,22 +17,13 @@
 
 			<br>
 			<span th:text="${@account.userName}+' さんがログイン中'"></span>
-			&nbsp;&nbsp;
+			&nbsp;&nbsp;<br>
 			<a href="/logout">ログアウト</a>
 			<br>
 			<br>
 
 
-			<hr>
-
-			<br>
-			あなたのレシピを新規で登録する
-			<br>
-			<!--				時間があればボタンに変更-->
-			<!--				<button onclick="location.href='URL'">サンプル</button>-->
-			<a href="/recipes/new">レシピ新規登録</a>
-			<br>
-			<br>
+			
 			<hr>
 			<br>
 
@@ -52,8 +42,6 @@
 			<br>
 
 
-			<hr>
-
 			料理別で絞り込む
 			<br>
 			<a href="/recipes?categoryId=1">和食</a>
@@ -64,7 +52,19 @@
 
 			<a href="/recipes?categoryId=4">その他</a>
 			<a href="/recipes">全レシピ</a>
+			
+			<br>
+			<br>
+			<hr>
 
+			<br>
+			あなたのレシピを新規で登録する
+			<br>
+			<!--				時間があればボタンに変更-->
+			<!--				<button onclick="location.href='URL'">サンプル</button>-->
+			<a href="/recipes/new">レシピ新規登録</a>
+			<br>
+			<br>
 
 			<hr>
 			<br>
@@ -97,11 +97,11 @@
 					</tr>
 					<tr>
 						<th>材料</th>
-						<td th:text="${recipe.materials}" cols="60"rows="3"></td>
+						<td th:text="${recipe.materials}" id="mt3"></td>
 					</tr>
 					<tr>
 						<th>作り方</th>
-						<td th:text="${recipe.contents}" cols="60"rows="12"></td>
+						<td th:text="${recipe.contents}" id="mt2"></td>
 					</tr>
 					<tr>
 						<th>レシピ作成者</th>

@@ -17,22 +17,13 @@
 
 			<br>
 			<span th:text="${@account.userName}+' さんがログイン中'"></span>
-			&nbsp;&nbsp;
+			&nbsp;&nbsp;<br>
 			<a href="/logout">ログアウト</a>
 			<br>
 			<br>
 
 
-			<hr>
-
-			<br>
-			あなたのレシピを新規で登録する
-			<br>
-			<!--				時間があればボタンに変更-->
-			<!--				<button onclick="location.href='URL'">サンプル</button>-->
-			<a href="/recipes/new">レシピ新規登録</a>
-			<br>
-			<br>
+			
 			<hr>
 			<br>
 
@@ -51,8 +42,6 @@
 			<br>
 
 
-			<hr>
-
 			料理別で絞り込む
 			<br>
 			<a href="/recipes?categoryId=1">和食</a>
@@ -63,7 +52,19 @@
 
 			<a href="/recipes?categoryId=4">その他</a>
 			<a href="/recipes">全レシピ</a>
+			
+			<br>
+			<br>
+			<hr>
 
+			<br>
+			あなたのレシピを新規で登録する
+			<br>
+			<!--				時間があればボタンに変更-->
+			<!--				<button onclick="location.href='URL'">サンプル</button>-->
+			<a href="/recipes/new">レシピ新規登録</a>
+			<br>
+			<br>
 
 			<hr>
 			<br>
@@ -80,10 +81,11 @@
 			<p>
 
 			<h2>レシピ情報変更</h2>
+			
+			<span th:text="${message}" style="color:red;"></span>
 
 			<form th:action="'/recipes/'+${recipe.id}+'/edit'" method="post">
 				<table border="1">
-					<span th:text="${message}" style="color:red;"></span>
 
 					<tr>
 						<th>カテゴリー</th>
@@ -115,11 +117,22 @@
 
 				</table>
 				<input type="submit" value="更新"class="button3">
+				
 			</form>
+			
 			<br>
 			<form action="/recipes" method="get">
 				<input type="submit" value="一覧に戻る"class="button2">
 			</form>
+			
+			<br>
+			<br>
+			<br>
+			
+			<form th:action="'/recipes/'+${recipe.id}+'/delete'" method="post"onsubmit="return confirm('本当に削除しますか？');">
+							<input type="submit" value="レシピの削除" class="button6">
+			</form>
+			
 		</div>
 		</p>
 	</article>
